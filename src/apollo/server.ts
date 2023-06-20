@@ -4,22 +4,15 @@ import { typeDefs } from './schema'
 
 export const packagePage = async (parent, args, context, info) => {
   console.log('Package Page Resolver', parent, args, context, info)
+  await new Promise(resolve => setTimeout(resolve, 1000))
   return ([
     {
-        "handler": "fkn",
-        "origin": "localhost",
-        "id": "4560-@banou/stub",
-        "uri": "fkn:localhost:4560-@banou/stub",
-        "url": "http://localhost:4560",
-        "name": "@banou/stub"
+        "uri": "foo",
+        "name": "foo"
     },
     {
-        "handler": "fkn",
-        "origin": "localhost",
-        "id": "4561-@banou/all-the-sources",
-        "uri": "fkn:localhost:4561-@banou/all-the-sources",
-        "url": "http://localhost:4561",
-        "name": "@banou/all-the-sources"
+        "uri": "bar",
+        "name": "bar"
     }
   ])
 }

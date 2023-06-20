@@ -13,7 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  fragment HandleFragment on Handle {\n    handler\n    origin\n    id\n    uri\n    url\n  }\n": types.HandleFragmentFragmentDoc,
+    "\n  fragment HandleFragment on Handle {\n    uri\n  }\n": types.HandleFragmentFragmentDoc,
     "\n  fragment PackageFragment on Package {\n    ...HandleFragment\n    name\n  }\n": types.PackageFragmentFragmentDoc,
     "\n  query LocalResolverPackages($search: String, $app: Boolean) {\n    Page {\n      package(search: $search, app: $app) {\n        ...PackageFragment\n      }\n    }\n  }\n": types.LocalResolverPackagesDocument,
 };
@@ -35,7 +35,7 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  fragment HandleFragment on Handle {\n    handler\n    origin\n    id\n    uri\n    url\n  }\n"): (typeof documents)["\n  fragment HandleFragment on Handle {\n    handler\n    origin\n    id\n    uri\n    url\n  }\n"];
+export function gql(source: "\n  fragment HandleFragment on Handle {\n    uri\n  }\n"): (typeof documents)["\n  fragment HandleFragment on Handle {\n    uri\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

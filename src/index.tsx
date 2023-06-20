@@ -4,15 +4,12 @@ import ReactDOM from 'react-dom/client'
 import { ApolloClient, InMemoryCache, ApolloProvider, useQuery } from '@apollo/client'
 
 import { gql } from './generated'
+import possibleTypes from './generated/possibleTypes'
 import link from './apollo/link'
 
 export const HANDLE_FRAGMENT = gql(`
   fragment HandleFragment on Handle {
-    handler
-    origin
-    id
     uri
-    url
   }
 `)
 
@@ -64,7 +61,15 @@ mount.className = 'mount'
 
 export const client = new ApolloClient({
   link,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache({
+    // if we comment this, the infinite request loop happens
+    // possibleTypes,
+    typePolicies: {
+      Handle: {
+        keyFields: ['uri'],
+      }
+    }
+  })
 })
 
 ReactDOM
