@@ -10,10 +10,12 @@ export const packagePage = async (parent, args, context, info) => {
         "uri": "foo",
         "name": "foo"
     },
-    {
-        "uri": "bar",
-        "name": "bar"
-    }
+    ...args.app
+      ? [{
+          "uri": "bar",
+          "name": "bar"
+      }]
+      : []
   ])
 }
 

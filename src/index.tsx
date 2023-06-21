@@ -63,9 +63,23 @@ export const client = new ApolloClient({
   link,
   cache: new InMemoryCache({
     // if we comment this, the infinite request loop happens
-    // possibleTypes,
+    possibleTypes,
     typePolicies: {
+      Query: {
+        fields: {
+          // Page: (existing, incoming) => existing ?? incoming
+        }
+      },
+      Page: {
+        keyFields: [],
+        fields: {
+          // package: (existing, incoming) => incoming
+        }
+      },
       Handle: {
+        keyFields: ['uri'],
+      },
+      Package: {
         keyFields: ['uri'],
       }
     }
